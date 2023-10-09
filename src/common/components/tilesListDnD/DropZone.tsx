@@ -33,7 +33,7 @@ const DropZone = <T extends object>(props: DropZoneProps<T>): JSX.Element => {
             className='bi bi-plus-circle-dotted'
             onMouseEnter={() => setIsMouseOver(true)}
             onMouseLeave={() => setIsMouseOver(false)}
-            data-addIcon={`${props.id}`}
+            data-addicon={`${props.id}`}
           />
         </div>
       );
@@ -49,7 +49,7 @@ const DropZone = <T extends object>(props: DropZoneProps<T>): JSX.Element => {
           isDisabled || props.thumbnailMode ? styles.disabled : ''
         }`}
       >
-        {isDisabled && props.textContent && !props.thumbnailMode ? 'Nie można dodać tego elementu' : props.textContent}
+        {isDisabled && props.textContent && !props.thumbnailMode ? 'Not available' : props.textContent}
       </div>
 
       {!props.thumbnailMode && getAddIcon(styles.addIconLeft)}

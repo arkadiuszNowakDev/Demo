@@ -57,6 +57,8 @@
     margin-inline: 10px;
     width: 100%;
     text-align: center;
+    color: $gray3;
+    font-size: 0.8rem;
 
     &.elementIsOver {
       background-color: rgb(104, 88, 88);

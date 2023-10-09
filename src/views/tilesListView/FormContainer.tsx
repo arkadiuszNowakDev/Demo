@@ -1,8 +1,7 @@
 import styles from './FormContainer.module.scss';
+import { FORMS_WITH_EDITABLE_NAME } from './TilesListView';
 import ConfigNameForm from '../../common/components/formElements/ConfigNameForm';
-import { FormData, FormType } from '../../types/FormTypes';
-
-const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'notNestableForm'];
+import { FormData } from '../../types/FormTypes';
 
 type FormContainerProps = {
   formData?: FormData;

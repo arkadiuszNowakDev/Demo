@@ -4,6 +4,7 @@ export type NestedTileItem<T> = T & {
   id: string;
   name: string;
   tileType: TileItemType;
+  isTileNameEditable?: boolean;
 };
 
 export type TileItem<T> = T & {
@@ -11,4 +12,5 @@ export type TileItem<T> = T & {
   name: string;
   tileType: TileItemType;
   nestedTileItems?: NestedTileItem<T>[];
+  isTileNameEditable?: boolean;
 };

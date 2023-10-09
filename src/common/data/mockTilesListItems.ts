@@ -6,13 +6,15 @@ export const mockFormsData: TileItem<FormData>[] = [
     id: '1',
     name: 'Nestable 1',
     tileType: 'nestable',
-    formType: 'nestableForm'
+    formType: 'nestableForm',
+    isTileNameEditable: true
   },
   {
     id: '2',
     name: 'Nestable 2',
     tileType: 'nestable',
-    formType: 'nestableForm'
+    formType: 'nestableForm',
+    isTileNameEditable: true
   },
   {
     id: '3',
@@ -24,7 +26,8 @@ export const mockFormsData: TileItem<FormData>[] = [
         id: '3.1',
         name: 'Nestable 3',
         tileType: 'nestable',
-        formType: 'nestableForm'
+        formType: 'nestableForm',
+        isTileNameEditable: true
       }
     ]
   },
@@ -39,6 +42,7 @@ export const mockFormsData: TileItem<FormData>[] = [
     id: '5',
     name: 'Not nestable 1',
     tileType: 'notNestable',
-    formType: 'notNestableForm'
+    formType: 'notNestableForm',
+    isTileNameEditable: true
   }
 ];

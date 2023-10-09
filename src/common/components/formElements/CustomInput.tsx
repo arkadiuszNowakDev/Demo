@@ -1,4 +1,4 @@
-import { Col, Form, Row } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 import { FormData } from '../../../types/FormTypes';
 

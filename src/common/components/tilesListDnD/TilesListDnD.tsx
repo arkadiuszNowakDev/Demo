@@ -16,7 +16,11 @@ import DropZone from './DropZone';
 import Tile from './Tile';
 import styles from './TilesListDnD.module.scss';
 import { NestedTileItem, TileItem } from '../../../types/TilesListDndTypes';
-import { findTileItem, getTilesListWithInsertIntoDropzone } from '../../helpers/tilesListDndHelpers';
+import {
+  findTileItem,
+  getTilesListWithInsertIntoDropzone,
+  onTileItemFieldChange
+} from '../../helpers/tilesListDndHelpers';
 import ContextMenu, { ContextMenuConfig } from '../contextMenu/ContextMenu';
 
 const defaultLastSelectedIndexConfig = {
@@ -113,7 +117,6 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
 
       const isItemFocused = focusedItemsIds.includes(tileItem.id);
 
-      //metaKey is here for command key to work on macOS
       if (e.ctrlKey || e.metaKey) {
         let newFocusedItems: TileItem<T>[] = [];
 
@@ -134,11 +137,11 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
         return;
       }
 
-      if (isRightMouseButtonClicked && isItemFocused) {
+      if ((isRightMouseButtonClicked || focusedItemsIds.length === 1) && isItemFocused) {
         return;
       }
 
-      const newFocusedItems = isItemFocused && focusedItemsIds.length === 1 ? [] : [tileItem];
+      const newFocusedItems = [tileItem];
 
       setFocusedItems(newFocusedItems);
     },
@@ -158,11 +161,24 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
     setActiveItem(undefined);
 
     if (!over?.id || typeof over.id !== 'string' || !activeItem) return;
+
     props.setTilesListItems((prev) => getTilesListWithInsertIntoDropzone(`${over.id}`, activeItem, prev));
   };
 
+  const onTileNameChange = useCallback((nameValue: string, itemToChangePositionIndexes: number[]) => {
+    props.setTilesListItems((prev) => {
+      const updatedItems = onTileItemFieldChange(prev, itemToChangePositionIndexes, 'name', nameValue);
+      return updatedItems || prev;
+    });
+  }, []);
+
   const getTileElement = useCallback(
-    (tileItem?: TileItem<T>, dropZonesCounter?: number, isInThumbnailMode?: boolean): JSX.Element => {
+    (
+      tileItemIndex: number,
+      tileItem?: TileItem<T>,
+      dropZonesCounter?: number,
+      isInThumbnailMode?: boolean
+    ): JSX.Element => {
       if (!tileItem) return <></>;
 
       let nestedDropZonesCounter = 0;
@@ -170,15 +186,20 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
       if (tileItem.tileType === 'nest') {
         return (
           <Fragment key={`TileWithNestElement${tileItem.id}`}>
-            <Tile tileItem={tileItem} onClick={onTileClick} isFocused={focusedItemsIds.includes(tileItem.id)}>
+            <Tile
+              tileItem={tileItem}
+              onClick={onTileClick}
+              isFocused={focusedItemsIds.includes(tileItem.id)}
+              onTileNameChange={(nameValue: string) => onTileNameChange(nameValue, [tileItemIndex, -1])}
+            >
               <DropZone
                 id={`nestedListDropzone:${nestedDropZonesCounter}:${tileItem.id}`}
-                textContent={!tileItem.nestedTileItems?.length ? 'Add the first element' : undefined}
+                textContent={!tileItem.nestedTileItems?.length ? 'Add element' : undefined}
                 activeItem={activeItem}
                 thumbnailMode={isInThumbnailMode}
               />
               {tileItem.nestedTileItems ? (
-                tileItem.nestedTileItems.map((nestedTileItem): JSX.Element => {
+                tileItem.nestedTileItems.map((nestedTileItem, nestedTileItemIndex): JSX.Element => {
                   if (nestedTileItem.id === activeItem?.id)
                     return <Fragment key={`TileNestedElement${nestedTileItem.id}`} />;
 
@@ -191,6 +212,9 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
                         nestParentId={tileItem.id}
                         onClick={onTileClick}
                         isFocused={focusedItemsIds.includes(nestedTileItem.id)}
+                        onTileNameChange={(nameValue: string) =>
+                          onTileNameChange(nameValue, [tileItemIndex, nestedTileItemIndex])
+                        }
                       />
                       <DropZone
                         id={`nestedListDropzone:${nestedDropZonesCounter}:${tileItem.id}`}
@@ -209,7 +233,12 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
       } else {
         return (
           <Fragment key={`TileWithoutNestElement${tileItem.id}`}>
-            <Tile tileItem={tileItem} onClick={onTileClick} isFocused={focusedItemsIds.includes(tileItem.id)} />
+            <Tile
+              tileItem={tileItem}
+              onClick={onTileClick}
+              isFocused={focusedItemsIds.includes(tileItem.id)}
+              onTileNameChange={(nameValue: string) => onTileNameChange(nameValue, [tileItemIndex, -1])}
+            />
             {dropZonesCounter && <DropZone id={`mainListDropzone:${dropZonesCounter}`} />}
           </Fragment>
         );
@@ -225,17 +254,17 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
       <ContextMenu config={props.contextMenuConfig} customClass={styles.tilesListDnD}>
         {!props.tilesListItems.length ? (
           <div className={styles.addFirstElement}>
-            <span data-addicon='mainListDropzone:0'>Add the first element</span>
+            <span data-addicon='mainListDropzone:0'>Add first element</span>
           </div>
         ) : (
           <DropZone id={`mainListDropzone:${dropZonesCounter}`} />
         )}
 
-        {props.tilesListItems.map((item): JSX.Element => {
+        {props.tilesListItems.map((item, index): JSX.Element => {
           if (item.id === activeItem?.id) return <Fragment key={`TileNestedElement${item.id}`} />;
 
           dropZonesCounter++;
-          return getTileElement(item, dropZonesCounter);
+          return getTileElement(index, item, dropZonesCounter);
         })}
       </ContextMenu>
     );
@@ -245,7 +274,7 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
     <DndContext sensors={sensors} onDragEnd={handleDragEnd} onDragStart={handleDragStart}>
       {tilesListElements}
       <DragOverlay>
-        {activeItem && <div className={styles.tileThumbnail}>{getTileElement(activeItem, undefined, true)}</div>}
+        {activeItem && <div className={styles.tileThumbnail}>{getTileElement(-1, activeItem, undefined, true)}</div>}
       </DragOverlay>
     </DndContext>
   );

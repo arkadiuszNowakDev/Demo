@@ -1,4 +1,4 @@
-export type FormType = 'nestableForm' | 'nestForm' | 'notNestableForm';
+export type FormType = 'nestableForm' | 'otherNestableForm' | 'nestForm' | 'notNestableForm';
 
 export type NestableFormData = {
   someValue: string;

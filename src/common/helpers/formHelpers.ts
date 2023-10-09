@@ -1,49 +1,24 @@
-import { FormData } from '../../types/FormTypes';
-import { TileItem } from '../../types/TilesListDndTypes';
+import { v4 as uuid } from 'uuid';
 
-export const updateForm = (
-  target: TileItem<FormData>,
-  fieldName: string,
-  value: string | boolean | string[],
-  formDataKey?: keyof FormData
-): TileItem<FormData> => {
-  return {
-    ...target,
-    [formDataKey ? formDataKey : fieldName]: formDataKey
-      ? { ...(target[formDataKey] as object), [fieldName]: value }
-      : value
-  };
-};
-
-export const updateNestedForm = (
-  target: TileItem<FormData>,
-  nestedIndex: number,
-  fieldName: string,
-  value: string | boolean | string[],
-  formDataKey?: keyof FormData
-): TileItem<FormData> => {
-  if (!target.nestedTileItems) return target;
-
-  const nestedForms = [...target.nestedTileItems];
-  const nestedForm = nestedForms[nestedIndex];
-
-  const updatedNestedObject = {
-    ...nestedForm,
-    [formDataKey ? formDataKey : fieldName]: formDataKey
-      ? { ...(nestedForm[formDataKey] as object), [fieldName]: value }
-      : value
-  };
-
-  nestedForms[nestedIndex] = updatedNestedObject;
-
-  return {
-    ...target,
-    nestedTileItems: nestedForms
-  };
-};
+import { FormData, FormType } from '../../types/FormTypes';
+import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
+import { FORMS_WITH_EDITABLE_NAME } from '../../views/tilesListView/TilesListView';
 
 export const checkIfFormDataIsNestedByAttributeId = (targetItemAttributeId: string | null) => {
   const nestItemData = targetItemAttributeId?.split(':');
   const nestItemId = nestItemData?.[2];
   return !!nestItemId;
+};
+
+export const getNewFormData = (tileType: TileItemType, formType: FormType, tileName?: string): TileItem<FormData> => {
+  const id = uuid();
+  const newFormData: TileItem<FormData> = {
+    id,
+    name: tileName || `${tileType} ${id.slice(0, 5)}`,
+    tileType,
+    formType,
+    isTileNameEditable: FORMS_WITH_EDITABLE_NAME.includes(formType)
+  };
+
+  return newFormData;
 };
