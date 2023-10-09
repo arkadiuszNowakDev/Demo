@@ -1,0 +1,22 @@
+@import '../../common/styles/colors.scss';
+@import '../../common/styles/mixins.scss';
+
+.mainView {
+  border: 2px solid $gray4;
+  border-radius: 10px;
+  min-width: 600px;
+  min-height: 400px;
+  padding: 10px;
+
+  @include flexCenter;
+  flex-direction: column;
+
+  span {
+    cursor: pointer;
+    color: $gray2;
+
+    &:hover {
+      color: $gray4;
+    }
+  }
+}
