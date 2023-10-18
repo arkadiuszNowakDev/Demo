@@ -13,28 +13,73 @@
 }
 
 :global {
+  .formContainer {
+    background-color: $black;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
   .formHeader {
     font-size: 18px;
-    margin-block: 5px 25px;
+    margin-block: 5px 15px;
     color: $gray1;
+  }
+
+  .formGrid {
+    display: grid;
+    grid-template-columns: 100px 200px;
+    grid-template-rows: 35px;
+    width: fit-content;
+    margin-left: 10px;
+    align-items: center;
+
+    &.gridSmall {
+      grid-template-columns: 70px 200px;
+    }
+
+    &.gridLarge {
+      grid-template-columns: 120px 200px;
+    }
   }
 
   .formLabel {
+    width: fit-content;
+    margin: 0;
     font-size: 14px;
-    display: grid;
-    grid-template-columns: 100px 200px;
-    margin-left: 10px;
     color: $gray1;
+    cursor: pointer;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @include noSelect;
   }
 
   .formControl {
-    border-radius: 0;
+    height: 25px;
     padding: 5px;
-    background-color: rgb(47, 47, 65);
+    background-color: $inputBackground;
     border: 1px solid $frame;
     border-radius: 5px;
-    box-shadow: none !important;
-    font-size: 10px;
     color: $gray1;
+    font-size: 14px;
+    box-shadow: none !important;
+
+    &:focus {
+      border: 1px solid $inputFocused;
+      background-color: $inputBackground;
+      color: $gray1;
+    }
+  }
+
+  .formCheck {
+    margin-inline: 10px 5px;
+    cursor: pointer;
+    background-color: $inputBackground;
+    box-shadow: none !important;
+    border: none;
+
+    &:checked {
+      background-color: $inputBackground;
+    }
   }
 }

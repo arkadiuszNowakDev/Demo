@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
-import FormContainer from './FormContainer';
+import FormContainer from './formContainer/FormContainer';
 import styles from './TilesListView.module.scss';
 import { ContextMenuConfig, ContextMenuItemsConfig } from '../../common/components/contextMenu/ContextMenu';
 import TilesListDnD from '../../common/components/tilesListDnD/TilesListDnD';
@@ -15,7 +15,7 @@ import {
 import { FormData, FormType } from '../../types/FormTypes';
 import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
 
-export const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'otherNestableForm', 'notNestableForm'];
+export const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'anotherNestableForm', 'notNestableForm'];
 
 const TilesListView = (): JSX.Element => {
   const [tilesListItems, setTilesListItems] = useState<TileItem<FormData>[]>(mockFormsData);
@@ -99,10 +99,10 @@ const TilesListView = (): JSX.Element => {
         }
       },
       {
-        id: 'createOtherNestableTile',
-        content: `Create other nestable tile`,
+        id: 'createAnotherNestableTile',
+        content: `Create another nestable tile`,
         onClick: (targetItemAttributeId) => {
-          onCreateNewTile('nestable', 'otherNestableForm', targetItemAttributeId, 'Other Nestable Tile');
+          onCreateNewTile('nestable', 'anotherNestableForm', targetItemAttributeId, 'Another Nestable Tile');
         }
       },
       {

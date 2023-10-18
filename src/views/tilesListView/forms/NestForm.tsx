@@ -1,11 +1,12 @@
-import { NestFormData } from '../../../types/FormTypes';
+import { FormData, NestFormData } from '../../../types/FormTypes';
 
 type NestFormProps = {
-  nestFormData: NestFormData;
+  nestFormData?: NestFormData;
+  onFormDataChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
 };
 
 const NestForm = (props: NestFormProps): JSX.Element => {
-  return <></>;
+  return <div className='formContainer'>NestForm</div>;
 };
 
 export default NestForm;

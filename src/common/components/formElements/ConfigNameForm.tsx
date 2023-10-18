@@ -8,7 +8,7 @@ import { FormType, FormData } from '../../../types/FormTypes';
 
 type ConfigNameFormProps = {
   currentFormData?: FormData;
-  onNameInputChange: (fieldName: string, value: string | boolean | string[], key?: keyof FormData) => void;
+  onNameInputChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
   formsWithEditableName: FormType[];
 };
 
@@ -45,6 +45,7 @@ const ConfigNameForm = (props: ConfigNameFormProps): JSX.Element => {
       {header}
       {isConfigNameFormComponentVisible && (
         <CustomInput<FormData>
+          id='nameInput'
           value={props.currentFormData?.name || ''}
           fieldName='name'
           labelContent='Form name'
