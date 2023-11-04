@@ -1,0 +1,9 @@
+.animatedHinge {
+  overflow: hidden;
+  transition: max-height 0.3s, opacity 0.3s;
+  opacity: 0;
+
+  &.opened {
+    opacity: 1;
+  }
+}

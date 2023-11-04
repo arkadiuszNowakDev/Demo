@@ -21,6 +21,8 @@
       align-items: center;
       opacity: 0;
       transition: opacity 0.2s;
+      position: relative;
+      z-index: 200;
 
       &:hover {
         color: $gray2;

@@ -24,5 +24,22 @@
   span {
     padding: 5px 10px;
     cursor: pointer;
+    color: $gray1;
+    @include noSelect;
+  }
+}
+
+.nestedTileWrapper {
+  position: relative;
+
+  .tileLinesBox {
+    width: 17px;
+    height: 65px;
+    position: absolute;
+    top: -45px;
+    left: -18px;
+    border-left: 2px solid $violet1;
+    border-bottom: 2px solid $violet1;
+    border-bottom-left-radius: 7px;
   }
 }

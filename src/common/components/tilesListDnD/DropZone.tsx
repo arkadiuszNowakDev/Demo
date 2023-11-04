@@ -33,7 +33,7 @@ const DropZone = <T extends object>(props: DropZoneProps<T>): JSX.Element => {
             className='bi bi-plus-circle-dotted'
             onMouseEnter={() => setIsMouseOver(true)}
             onMouseLeave={() => setIsMouseOver(false)}
-            data-addicon={`${props.id}`}
+            data-addicon={props.id}
           />
         </div>
       );

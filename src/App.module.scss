@@ -3,7 +3,7 @@
 
 body {
   @include scrollable;
-  min-width: 950px;
+  min-width: 1000px;
   overflow-y: hidden;
   overflow-x: auto;
 }
@@ -24,6 +24,7 @@ body {
     background-color: $black;
     border-radius: 5px;
     padding: 10px;
+    flex-grow: 1;
   }
 
   .formHeader {

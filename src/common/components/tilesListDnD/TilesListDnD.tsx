@@ -207,15 +207,18 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
 
                   return (
                     <Fragment key={`TileNestedElement${nestedTileItem.id}`}>
-                      <Tile
-                        tileItem={nestedTileItem}
-                        nestParentId={tileItem.id}
-                        onClick={onTileClick}
-                        isFocused={focusedItemsIds.includes(nestedTileItem.id)}
-                        onTileNameChange={(nameValue: string) =>
-                          onTileNameChange(nameValue, [tileItemIndex, nestedTileItemIndex])
-                        }
-                      />
+                      <div className={styles.nestedTileWrapper}>
+                        <div className={styles.tileLinesBox} />
+                        <Tile
+                          tileItem={nestedTileItem}
+                          nestParentId={tileItem.id}
+                          onClick={onTileClick}
+                          isFocused={focusedItemsIds.includes(nestedTileItem.id)}
+                          onTileNameChange={(nameValue: string) =>
+                            onTileNameChange(nameValue, [tileItemIndex, nestedTileItemIndex])
+                          }
+                        />
+                      </div>
                       <DropZone
                         id={`nestedListDropzone:${nestedDropZonesCounter}:${tileItem.id}`}
                         activeItem={activeItem}
@@ -254,7 +257,7 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
       <ContextMenu config={props.contextMenuConfig} customClass={styles.tilesListDnD}>
         {!props.tilesListItems.length ? (
           <div className={styles.addFirstElement}>
-            <span data-addicon='mainListDropzone:0'>Add first element</span>
+            <span data-addicon='mainListDropzone:0'>Add the first element</span>
           </div>
         ) : (
           <DropZone id={`mainListDropzone:${dropZonesCounter}`} />

@@ -2,17 +2,19 @@ import { Form } from 'react-bootstrap';
 
 import { FormData } from '../../../types/FormTypes';
 
-type CustomCheckProps<T extends object> = {
+type CustomCheckProps<T extends object, K extends object | undefined = undefined> = {
   fieldName: keyof T;
   isChecked: boolean;
-  formDataKey?: keyof FormData;
+  nestedObjectKey?: keyof K;
   value?: string;
-  onChange: (fieldName: string, value: string | boolean, formDataKey?: keyof FormData) => void;
+  onChange: (fieldName: string, value: string | boolean, formDataKey?: keyof K) => void;
   labelContent: string;
   type?: 'checkbox' | 'radio';
 };
 
-const CustomCheck = <T extends object>(props: CustomCheckProps<T>): JSX.Element => {
+const CustomCheck = <T extends object, K extends object | undefined = undefined>(
+  props: CustomCheckProps<T, K>
+): JSX.Element => {
   return (
     <Form.Label className='formLabel'>
       <Form.Check.Input
@@ -21,7 +23,7 @@ const CustomCheck = <T extends object>(props: CustomCheckProps<T>): JSX.Element 
         type={props.type}
         className='formCheck'
         onChange={(e) =>
-          props.onChange(e.target.name, props.value ? e.target.value : e.target.checked, props.formDataKey)
+          props.onChange(e.target.name, props.value ? e.target.value : e.target.checked, props.nestedObjectKey)
         }
         checked={props.isChecked}
       />

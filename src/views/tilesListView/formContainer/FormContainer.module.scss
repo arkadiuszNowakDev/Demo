@@ -1,14 +1,19 @@
 @import '../../../common/styles/colors.scss';
 @import '../../../common/styles/mixins.scss';
 
-.formContainer {
+.form {
   height: 100%;
   border-radius: 5px;
   border: 1px solid $gray4;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  @include scrollable;
 
   .noDataInfo {
     height: 100%;
     @include flexCenter;
+    color: $gray1;
   }
 }

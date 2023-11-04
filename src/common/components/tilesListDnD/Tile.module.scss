@@ -8,12 +8,14 @@
   color: $black;
 
   .tile {
-    border-radius: 5px;
-    cursor: pointer;
     height: 40px;
-    transition: outline 0.1s;
+    cursor: pointer;
+    border-radius: 5px;
     outline: 2px solid $gray4;
+    transition: outline 0.1s;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 100;
     @include flexCenter;
 
     &.nestTile {
@@ -57,8 +59,6 @@
   }
 
   .nest {
-    padding-inline: 25px 15px;
-    margin: 5px 0 0 15px;
-    border-left: 1px solid rgb(156, 151, 151);
+    padding-inline: 35px 10px;
   }
 }

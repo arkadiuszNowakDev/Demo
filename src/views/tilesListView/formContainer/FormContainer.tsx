@@ -2,12 +2,12 @@ import { useMemo } from 'react';
 
 import styles from './FormContainer.module.scss';
 import ConfigNameForm from '../../../common/components/formElements/ConfigNameForm';
+import { FORMS_WITH_EDITABLE_NAME } from '../../../common/helpers/formHelpers';
 import { FormData } from '../../../types/FormTypes';
 import AnotherNestableForm from '../forms/AnotherNestableForm';
 import NestableForm from '../forms/NestableForm';
 import NestForm from '../forms/NestForm';
 import NotNestableForm from '../forms/NotNestableForm';
-import { FORMS_WITH_EDITABLE_NAME } from '../TilesListView';
 
 type FormContainerProps = {
   formData?: FormData;
@@ -16,7 +16,7 @@ type FormContainerProps = {
 
 const FormContainer = (props: FormContainerProps): JSX.Element => {
   const formElement = useMemo(() => {
-    if (!props.formData) return <></>;
+    if (!props.formData) return <div className={styles.noDataInfo}>Choose some element from the list</div>;
 
     switch (props.formData.formType) {
       case 'nestableForm':
@@ -45,11 +45,7 @@ const FormContainer = (props: FormContainerProps): JSX.Element => {
   }, [props.formData]);
 
   return (
-    <div className={styles.formContainer}>
-      {!props.formData && (
-        <div className={styles.noDataInfo}>{!props.formData && 'Choose some element from the list'}</div>
-      )}
-
+    <div className={styles.form}>
       {props.formData && (
         <ConfigNameForm
           currentFormData={props.formData}
@@ -58,7 +54,7 @@ const FormContainer = (props: FormContainerProps): JSX.Element => {
         />
       )}
 
-      {props.formData && formElement}
+      {formElement}
     </div>
   );
 };

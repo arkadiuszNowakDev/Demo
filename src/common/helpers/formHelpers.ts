@@ -2,7 +2,8 @@ import { v4 as uuid } from 'uuid';
 
 import { FormData, FormType } from '../../types/FormTypes';
 import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
-import { FORMS_WITH_EDITABLE_NAME } from '../../views/tilesListView/TilesListView';
+
+export const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'anotherNestableForm', 'notNestableForm'];
 
 export const checkIfFormDataIsNestedByAttributeId = (targetItemAttributeId: string | null) => {
   const nestItemData = targetItemAttributeId?.split(':');
@@ -20,5 +21,23 @@ export const getNewFormData = (tileType: TileItemType, formType: FormType, tileN
     isTileNameEditable: FORMS_WITH_EDITABLE_NAME.includes(formType)
   };
 
-  return newFormData;
+  switch (formType) {
+    case 'nestableForm':
+      return {
+        ...newFormData,
+        nestableFormData: {
+          someStringValue1: '',
+          someStringValue2: '',
+          someStringValue3: '',
+          optionalFlag1: false,
+          optionalFlag2: false,
+          optionalFlag3: false,
+          optionalStringValue1: '',
+          optionalStringValue2: '',
+          optionalStringValue3: ''
+        }
+      };
+    default:
+      return newFormData;
+  }
 };

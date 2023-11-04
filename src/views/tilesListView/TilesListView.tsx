@@ -15,8 +15,6 @@ import {
 import { FormData, FormType } from '../../types/FormTypes';
 import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
 
-export const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'anotherNestableForm', 'notNestableForm'];
-
 const TilesListView = (): JSX.Element => {
   const [tilesListItems, setTilesListItems] = useState<TileItem<FormData>[]>(mockFormsData);
   const [focusedItemId, setFocusedItemId] = useState<string | undefined>(undefined);
