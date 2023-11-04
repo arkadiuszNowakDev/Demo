@@ -7,7 +7,7 @@ import { getContextMenuOffset } from '../../helpers/contextMenuHelpers';
 
 type ClickMode = 'right' | 'left';
 
-export type ContextMenuItemsConfig = {
+export type ContextMenuItemConfig = {
   id: string;
   content: string | JSX.Element;
   onClick?: (targetItemAttributeId?: string) => void;
@@ -16,7 +16,7 @@ export type ContextMenuItemsConfig = {
 };
 
 export type ContextMenuConfig = {
-  itemsConfig: ContextMenuItemsConfig[];
+  itemsConfig: ContextMenuItemConfig[];
   attributeSelector: string;
   clickMode: ClickMode;
 };
@@ -38,7 +38,7 @@ const ContextMenu = (props: ContextMenuProps): JSX.Element => {
   const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
 
-  const [contextMenuItemsConfig, setContextMenuItemsConfig] = useState<ContextMenuItemsConfig[] | undefined>(undefined);
+  const [contextMenuItemsConfig, setContextMenuItemsConfig] = useState<ContextMenuItemConfig[] | undefined>(undefined);
 
   const targetItem = useRef<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -105,7 +105,7 @@ const ContextMenu = (props: ContextMenuProps): JSX.Element => {
   };
 
   const getMenuItems = useCallback(
-    (submenuItems?: ContextMenuItemsConfig[]) => {
+    (submenuItems?: ContextMenuItemConfig[]) => {
       const items = submenuItems ?? contextMenuItemsConfig;
       if (!items) return;
 

@@ -1,3 +1,5 @@
+@import './colors.scss';
+
 @mixin flexCenter {
   display: flex;
   justify-content: center;
@@ -10,4 +12,33 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+@mixin scrollable {
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: $beige1;
+
+    &:hover {
+      background-color: $beige2;
+    }
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $gray4;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: $gray4;
+  }
+
+  &::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+  }
 }

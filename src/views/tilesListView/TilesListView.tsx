@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef, useState } from 'react';
 
 import FormContainer from './formContainer/FormContainer';
 import styles from './TilesListView.module.scss';
-import { ContextMenuConfig, ContextMenuItemsConfig } from '../../common/components/contextMenu/ContextMenu';
+import { ContextMenuConfig, ContextMenuItemConfig } from '../../common/components/contextMenu/ContextMenu';
 import TilesListDnD from '../../common/components/tilesListDnD/TilesListDnD';
 import { mockFormsData } from '../../common/data/mockTilesListItems';
 import { getNewFormData } from '../../common/helpers/formHelpers';
@@ -73,7 +73,12 @@ const TilesListView = (): JSX.Element => {
     [tilesListItems, setTilesListItems, focusedItemId]
   );
 
-  const tilesContextMenuItemsConfig: ContextMenuItemsConfig[] = useMemo(
+  const isContextMenuItemDisabled = (currentTarget: string | null) => {
+    if (!currentTarget) return false;
+    return currentTarget.startsWith('nested');
+  };
+
+  const tilesContextMenuItemsConfig: ContextMenuItemConfig[] = useMemo(
     () => [
       {
         id: 'deleteCheckedItems',
@@ -89,7 +94,7 @@ const TilesListView = (): JSX.Element => {
     []
   );
 
-  const addIconsContextMenuItemsConfig: ContextMenuItemsConfig[] = useMemo(
+  const addIconsContextMenuItemsConfig: ContextMenuItemConfig[] = useMemo(
     () => [
       {
         id: 'createNestableTile',
@@ -110,14 +115,16 @@ const TilesListView = (): JSX.Element => {
         content: `Create not nestable tile`,
         onClick: (targetItemAttributeId) => {
           onCreateNewTile('notNestable', 'notNestableForm', targetItemAttributeId, 'Not Nestable Tile');
-        }
+        },
+        isDisabled: isContextMenuItemDisabled
       },
       {
         id: 'createNestTile',
         content: `Create nest tile`,
         onClick: (targetItemAttributeId) => {
           onCreateNewTile('nest', 'nestForm', targetItemAttributeId, 'Nest Tile');
-        }
+        },
+        isDisabled: isContextMenuItemDisabled
       }
     ],
     []

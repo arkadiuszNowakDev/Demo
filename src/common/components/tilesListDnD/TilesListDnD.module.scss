@@ -1,10 +1,12 @@
 @import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
 
 .tilesListDnD {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
+  @include scrollable;
   padding: 5px 15px 20px 15px;
   width: 100%;
 }

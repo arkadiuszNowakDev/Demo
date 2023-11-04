@@ -13,21 +13,20 @@
     height: 40px;
     transition: outline 0.1s;
     outline: 2px solid $gray4;
-
-    @include flexCenter;
     font-size: 0.9rem;
+    @include flexCenter;
 
     &.nestTile {
-      background-color: rgb(19, 32, 19);
+      background-color: $green2;
       color: $gray1;
     }
 
     &.nestableTile {
-      background-color: rgb(182, 163, 131);
+      background-color: $beige1;
     }
 
     &.notNestableTile {
-      background-color: rgb(112, 111, 111);
+      background-color: $gray3;
     }
 
     &.focused {
