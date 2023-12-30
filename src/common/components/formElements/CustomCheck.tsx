@@ -1,7 +1,5 @@
 import { Form } from 'react-bootstrap';
 
-import { FormData } from '../../../types/FormTypes';
-
 type CustomCheckProps<T extends object, K extends object | undefined = undefined> = {
   fieldName: keyof T;
   isChecked: boolean;

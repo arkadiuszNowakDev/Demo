@@ -12,9 +12,7 @@ export type NestableFormData = {
   optionalStringValue3: string;
 };
 
-export type AnotherNestableFormData = {
-  someValue: string;
-};
+export type AnotherNestableFormData = Record<string, string>;
 
 export type NestFormData = {
   someValue: string;

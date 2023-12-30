@@ -37,6 +37,11 @@ export const getNewFormData = (tileType: TileItemType, formType: FormType, tileN
           optionalStringValue3: ''
         }
       };
+    case 'anotherNestableForm':
+      return {
+        ...newFormData,
+        anotherNestableFormData: {}
+      };
     default:
       return newFormData;
   }

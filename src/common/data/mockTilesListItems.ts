@@ -4,23 +4,17 @@ import { getNewFormData } from '../helpers/formHelpers';
 
 export const mockFormsData: TileItem<FormData>[] = [
   getNewFormData('nestable', 'nestableForm', 'Nestable 1'),
-  {
-    id: '2',
-    name: 'Another nestable 1',
-    tileType: 'nestable',
-    formType: 'anotherNestableForm',
-    isTileNameEditable: true
-  },
+  getNewFormData('nestable', 'anotherNestableForm', 'Another nestable 1'),
   {
     id: '3',
-    name: 'Nest 1',
+    name: 'Nest Tile',
     tileType: 'nest',
     formType: 'nestForm',
     nestedTileItems: [getNewFormData('nestable', 'nestableForm', 'Nestable 2')]
   },
   {
     id: '4',
-    name: 'Nest 2',
+    name: 'Nest Tile',
     tileType: 'nest',
     nestedTileItems: [],
     formType: 'nestForm'
