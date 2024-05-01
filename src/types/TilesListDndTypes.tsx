@@ -1,16 +1,11 @@
 export type TileItemType = 'nestable' | 'notNestable' | 'nest';
 
-export type NestedTileItem<T> = T & {
+export type TileItemBasic = {
   id: string;
   name: string;
   tileType: TileItemType;
-  isTileNameEditable?: boolean;
 };
 
-export type TileItem<T> = T & {
-  id: string;
-  name: string;
-  tileType: TileItemType;
-  nestedTileItems?: NestedTileItem<T>[];
-  isTileNameEditable?: boolean;
-};
+export type NestedTileItem<T> = T & TileItemBasic;
+
+export type TileItem<T> = T & TileItemBasic & { nestedTileItems?: NestedTileItem<T>[] };

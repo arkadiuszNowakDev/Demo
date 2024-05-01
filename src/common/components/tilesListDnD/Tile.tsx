@@ -49,7 +49,6 @@ const Tile = <T extends object>(props: TileProps<T>): JSX.Element => {
   }, [props.isFocused]);
 
   const onDoubleClick = () => {
-    if (!props.tileItem.isTileNameEditable) return;
     setIsNameEdited(true);
   };
 
@@ -64,7 +63,7 @@ const Tile = <T extends object>(props: TileProps<T>): JSX.Element => {
   };
 
   const tileNameElement = useMemo(() => {
-    return isNameEdited && props.tileItem.isTileNameEditable ? (
+    return isNameEdited ? (
       <input
         ref={nameInputRef}
         value={props.tileItem.name}

@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 
 import styles from './FormContainer.module.scss';
 import ConfigNameForm from '../../../common/components/formElements/ConfigNameForm';
-import { FORMS_WITH_EDITABLE_NAME } from '../../../common/helpers/formHelpers';
 import { FormData } from '../../../types/FormTypes';
 import AnotherNestableForm from '../forms/AnotherNestableForm';
 import NestableForm from '../forms/NestableForm';
@@ -11,7 +10,7 @@ import NotNestableForm from '../forms/NotNestableForm';
 
 type FormContainerProps = {
   formData?: FormData;
-  onFormDataChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
+  onFormDataChange: (fieldName: string, value: string | boolean) => void;
 };
 
 const FormContainer = (props: FormContainerProps): JSX.Element => {
@@ -20,40 +19,23 @@ const FormContainer = (props: FormContainerProps): JSX.Element => {
 
     switch (props.formData.formType) {
       case 'nestableForm':
-        return (
-          <NestableForm nestableFormData={props.formData.nestableFormData} onFormDataChange={props.onFormDataChange} />
-        );
+        return <NestableForm nestableFormData={props.formData} onFormDataChange={props.onFormDataChange} />;
       case 'anotherNestableForm':
         return (
-          <AnotherNestableForm
-            anotherNestableFormData={props.formData.anotherNestableFormData}
-            onFormDataChange={props.onFormDataChange}
-          />
+          <AnotherNestableForm anotherNestableFormData={props.formData} onFormDataChange={props.onFormDataChange} />
         );
       case 'nestForm':
-        return <NestForm nestFormData={props.formData.nestFormData} onFormDataChange={props.onFormDataChange} />;
+        return <NestForm nestFormData={props.formData} onFormDataChange={props.onFormDataChange} />;
       case 'notNestableForm':
-        return (
-          <NotNestableForm
-            notNestableFormData={props.formData.notNestableFormData}
-            onFormDataChange={props.onFormDataChange}
-          />
-        );
+        return <NotNestableForm notNestableFormData={props.formData} onFormDataChange={props.onFormDataChange} />;
       default:
         return <></>;
     }
-  }, [props.formData]);
+  }, [props.formData, props.onFormDataChange]);
 
   return (
     <div className={styles.form}>
-      {props.formData && (
-        <ConfigNameForm
-          currentFormData={props.formData}
-          onNameInputChange={props.onFormDataChange}
-          formsWithEditableName={FORMS_WITH_EDITABLE_NAME}
-        />
-      )}
-
+      {props.formData && <ConfigNameForm currentFormData={props.formData} onNameInputChange={props.onFormDataChange} />}
       {formElement}
     </div>
   );

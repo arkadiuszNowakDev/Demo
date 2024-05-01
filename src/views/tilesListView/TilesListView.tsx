@@ -51,19 +51,12 @@ const TilesListView = (): JSX.Element => {
   };
 
   const onFormDataChange = useCallback(
-    (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData): void => {
+    (fieldName: string, value: string | boolean): void => {
       if (!focusedItemId) return;
 
       setTilesListItems((prevItems) => {
-        const itemToChangePositionIndexes = findTileItem(focusedItemId, prevItems).itemPositionIndexes;
-
-        const updatedActions = onTileItemFieldChange(
-          prevItems,
-          itemToChangePositionIndexes,
-          fieldName,
-          value,
-          formDataKey
-        );
+        const { itemPositionIndexes } = findTileItem(focusedItemId, prevItems);
+        const updatedActions = onTileItemFieldChange(prevItems, itemPositionIndexes, fieldName, value);
 
         return updatedActions || prevItems;
       });

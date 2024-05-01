@@ -1,8 +1,8 @@
-import { FormData, NestFormData } from '../../../types/FormTypes';
+import { NestFormData } from '../../../types/FormTypes';
 
 type NestFormProps = {
-  nestFormData?: NestFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
+  nestFormData: NestFormData;
+  onFormDataChange: (fieldName: string, value: string | boolean) => void;
 };
 
 const NestForm = (props: NestFormProps): JSX.Element => {

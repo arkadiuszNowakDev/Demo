@@ -1,27 +1,28 @@
-import { Fragment, MouseEvent } from 'react';
+import { Fragment, MouseEvent, useCallback } from 'react';
 
 import CustomButton, { CustomButtonType } from '../../../common/components/customButton/CustomButton';
-import { AnotherNestableFormData, FormData } from '../../../types/FormTypes';
+import { AnotherNestableFormData } from '../../../types/FormTypes';
 
 const BUTTONS_OPTIONS_QTY = 3;
 const BUTTONS_TYPES_IN_ROW: CustomButtonType[] = ['tertiary', 'secondary', 'primary'];
 
 type AnotherNestableFormProps = {
-  anotherNestableFormData?: AnotherNestableFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
+  anotherNestableFormData: AnotherNestableFormData;
+  onFormDataChange: (fieldName: string, value: string | boolean) => void;
 };
 
 const AnotherNestableForm = (props: AnotherNestableFormProps): JSX.Element => {
-  if (!props.anotherNestableFormData) return <></>;
+  const onFormButtonClick = useCallback(
+    (e: MouseEvent<HTMLElement>) => {
+      const formOptionData = e.currentTarget.dataset.formoption;
 
-  const onFormButtonClick = (e: MouseEvent<HTMLElement>) => {
-    const formOptionData = e.currentTarget.dataset.formoption;
-
-    if (formOptionData) {
-      const [fieldName, optionType] = formOptionData.split('-');
-      props.onFormDataChange(fieldName, optionType, 'anotherNestableFormData');
-    }
-  };
+      if (formOptionData) {
+        const [fieldName, optionType] = formOptionData.split('-');
+        props.onFormDataChange(fieldName, optionType);
+      }
+    },
+    [props.onFormDataChange]
+  );
 
   return (
     <div className='formContainer'>

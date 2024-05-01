@@ -1,18 +1,15 @@
 import { Form } from 'react-bootstrap';
 
-type CustomInputProps<T extends object, K extends object | undefined = undefined> = {
+type CustomInputProps<T extends object> = {
   id: string;
   value: string;
   fieldName: keyof T;
-  nestedObjectKey?: keyof K;
   labelContent: string;
-  onInputChange: (fieldName: string, value: string | boolean, formDataKey?: keyof K) => void;
+  onInputChange: (fieldName: string, value: string | boolean) => void;
   customGroupClass?: string;
 };
 
-const CustomInput = <T extends object, K extends object | undefined = undefined>(
-  props: CustomInputProps<T, K>
-): JSX.Element => {
+const CustomInput = <T extends object>(props: CustomInputProps<T>): JSX.Element => {
   return (
     <Form.Group className={`formGrid ${props.customGroupClass}`}>
       <Form.Label htmlFor={props.id} className='formLabel'>
@@ -24,7 +21,7 @@ const CustomInput = <T extends object, K extends object | undefined = undefined>
         type='text'
         name={props.fieldName.toString()}
         value={props.value}
-        onChange={(e) => props.onInputChange(e.target.name, e.target.value, props.nestedObjectKey)}
+        onChange={(e) => props.onInputChange(e.target.name, e.target.value)}
         autoComplete='off'
       />
     </Form.Group>

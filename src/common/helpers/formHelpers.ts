@@ -1,9 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import { FormData, FormType } from '../../types/FormTypes';
-import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
-
-export const FORMS_WITH_EDITABLE_NAME: FormType[] = ['nestableForm', 'anotherNestableForm', 'notNestableForm'];
+import { TileItem, TileItemBasic, TileItemType } from '../../types/TilesListDndTypes';
 
 export const checkIfFormDataIsNestedByAttributeId = (targetItemAttributeId: string | null) => {
   const nestItemData = targetItemAttributeId?.split(':');
@@ -11,38 +9,48 @@ export const checkIfFormDataIsNestedByAttributeId = (targetItemAttributeId: stri
   return !!nestItemId;
 };
 
-export const getNewFormData = (tileType: TileItemType, formType: FormType, tileName?: string): TileItem<FormData> => {
+export const getNewTileItemBasic = (tileType: TileItemType, tileName?: string): TileItemBasic => {
   const id = uuid();
-  const newFormData: TileItem<FormData> = {
-    id,
-    name: tileName || `${tileType} ${id.slice(0, 5)}`,
-    tileType,
-    formType,
-    isTileNameEditable: FORMS_WITH_EDITABLE_NAME.includes(formType)
-  };
+  const name = tileName || `${tileType} ${id.slice(0, 5)}`;
 
+  return { id, name, tileType };
+};
+
+export const getNewFormData = (tileType: TileItemType, formType: FormType, tileName?: string): TileItem<FormData> => {
   switch (formType) {
     case 'nestableForm':
       return {
-        ...newFormData,
-        nestableFormData: {
-          someStringValue1: '',
-          someStringValue2: '',
-          someStringValue3: '',
-          optionalFlag1: false,
-          optionalFlag2: false,
-          optionalFlag3: false,
-          optionalStringValue1: '',
-          optionalStringValue2: '',
-          optionalStringValue3: ''
-        }
+        ...getNewTileItemBasic(tileType, tileName),
+        formType,
+        someStringValue1: '',
+        someStringValue2: '',
+        someStringValue3: '',
+        optionalFlag1: false,
+        optionalFlag2: false,
+        optionalFlag3: false,
+        optionalStringValue1: '',
+        optionalStringValue2: '',
+        optionalStringValue3: ''
       };
+
     case 'anotherNestableForm':
       return {
-        ...newFormData,
-        anotherNestableFormData: {}
+        ...getNewTileItemBasic(tileType, tileName),
+        formType
       };
-    default:
-      return newFormData;
+
+    case 'nestForm':
+      return {
+        ...getNewTileItemBasic(tileType, tileName),
+        formType,
+        someValue: ''
+      };
+
+    case 'notNestableForm':
+      return {
+        ...getNewTileItemBasic(tileType, tileName),
+        formType,
+        someValue: ''
+      };
   }
 };

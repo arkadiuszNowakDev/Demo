@@ -10,20 +10,22 @@ export const mockFormsData: TileItem<FormData>[] = [
     name: 'Nest Tile',
     tileType: 'nest',
     formType: 'nestForm',
-    nestedTileItems: [getNewFormData('nestable', 'nestableForm', 'Nestable 2')]
+    nestedTileItems: [getNewFormData('nestable', 'nestableForm', 'Nestable 2')],
+    someValue: ''
   },
   {
     id: '4',
     name: 'Nest Tile',
     tileType: 'nest',
     nestedTileItems: [],
-    formType: 'nestForm'
+    formType: 'nestForm',
+    someValue: ''
   },
   {
     id: '5',
     name: 'Not nestable 1',
     tileType: 'notNestable',
     formType: 'notNestableForm',
-    isTileNameEditable: true
+    someValue: ''
   }
 ];

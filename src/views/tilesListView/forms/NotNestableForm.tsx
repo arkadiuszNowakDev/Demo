@@ -1,8 +1,8 @@
-import { FormData, NotNestableFormData } from '../../../types/FormTypes';
+import { NotNestableFormData } from '../../../types/FormTypes';
 
 type NotNestableFormProps = {
   notNestableFormData?: NotNestableFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean | string[], formDataKey?: keyof FormData) => void;
+  onFormDataChange: (fieldName: string, value: string | boolean) => void;
 };
 
 const NotNestableForm = (props: NotNestableFormProps): JSX.Element => {

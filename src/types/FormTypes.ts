@@ -1,6 +1,7 @@
 export type FormType = 'nestableForm' | 'anotherNestableForm' | 'nestForm' | 'notNestableForm';
 
 export type NestableFormData = {
+  formType: 'nestableForm';
   someStringValue1: string;
   someStringValue2: string;
   someStringValue3: string;
@@ -12,13 +13,15 @@ export type NestableFormData = {
   optionalStringValue3: string;
 };
 
-export type AnotherNestableFormData = Record<string, string>;
+export type AnotherNestableFormData = { formType: 'anotherNestableForm' } & Record<string, string>;
 
 export type NestFormData = {
+  formType: 'nestForm';
   someValue: string;
 };
 
 export type NotNestableFormData = {
+  formType: 'notNestableForm';
   someValue: string;
 };
 
@@ -26,9 +29,4 @@ export type FormData = {
   id: string;
   name: string;
   formType: FormType;
-
-  nestableFormData?: NestableFormData;
-  anotherNestableFormData?: AnotherNestableFormData;
-  nestFormData?: NestFormData;
-  notNestableFormData?: NotNestableFormData;
-};
+} & (NestableFormData | AnotherNestableFormData | NestFormData | NotNestableFormData);
