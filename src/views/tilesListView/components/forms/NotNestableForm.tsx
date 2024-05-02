@@ -1,4 +1,5 @@
-import { NotNestableFormData } from '../../../types/FormTypes';
+import styles from './commonFormsStyles.module.scss';
+import { NotNestableFormData } from '../../../../types/FormTypes';
 
 type NotNestableFormProps = {
   notNestableFormData?: NotNestableFormData;
@@ -6,7 +7,7 @@ type NotNestableFormProps = {
 };
 
 const NotNestableForm = (props: NotNestableFormProps): JSX.Element => {
-  return <div className='formContainer'>NotNestableForm</div>;
+  return <div className={styles.formContainer}>NotNestableForm</div>;
 };
 
 export default NotNestableForm;

@@ -1,9 +1,10 @@
 import { Form } from 'react-bootstrap';
 
-import AnimatedHinge from '../../../common/components/animatedHinge/AnimatedHinge';
-import CustomCheck from '../../../common/components/formElements/CustomCheck';
-import CustomInput from '../../../common/components/formElements/CustomInput';
-import { NestableFormData } from '../../../types/FormTypes';
+import styles from './commonFormsStyles.module.scss';
+import { NestableFormData } from '../../../../types/FormTypes';
+import AnimatedHinge from '../animatedHinge/AnimatedHinge';
+import CustomCheck from '../formElements/CustomCheck';
+import CustomInput from '../formElements/CustomInput';
 
 type NestableFormProps = {
   nestableFormData: NestableFormData;
@@ -12,7 +13,7 @@ type NestableFormProps = {
 
 const NestableForm = (props: NestableFormProps): JSX.Element => {
   return (
-    <div className='formContainer'>
+    <div className={styles.formContainer}>
       <Form.Group className='mb-3'>
         <CustomInput<NestableFormData>
           id='someStringValue1Input'
@@ -20,7 +21,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
           fieldName='someStringValue1'
           labelContent='Value 1'
           onInputChange={props.onFormDataChange}
-          customGroupClass='gridSmall'
+          customGroupClass={styles.gridSmall}
         />
         <CustomInput<NestableFormData>
           id='someStringValue2Input'
@@ -28,7 +29,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
           fieldName='someStringValue2'
           labelContent='Value 2'
           onInputChange={props.onFormDataChange}
-          customGroupClass='gridSmall'
+          customGroupClass={styles.gridSmall}
         />
         <CustomInput<NestableFormData>
           id='someStringValue3Input'
@@ -36,7 +37,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
           fieldName='someStringValue3'
           labelContent='Value 3'
           onInputChange={props.onFormDataChange}
-          customGroupClass='gridSmall'
+          customGroupClass={styles.gridSmall}
         />
       </Form.Group>
 
@@ -56,7 +57,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
             fieldName='optionalStringValue1'
             labelContent='Optional value 1'
             onInputChange={props.onFormDataChange}
-            customGroupClass='gridLarge ms-4'
+            customGroupClass={`${styles.gridLarge} ms-4`}
           />
         </AnimatedHinge>
       </Form.Group>
@@ -77,7 +78,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
             fieldName='optionalStringValue2'
             labelContent='Optional value 2'
             onInputChange={props.onFormDataChange}
-            customGroupClass='gridLarge ms-4'
+            customGroupClass={`${styles.gridLarge} ms-4`}
           />
         </AnimatedHinge>
       </Form.Group>
@@ -98,7 +99,7 @@ const NestableForm = (props: NestableFormProps): JSX.Element => {
             fieldName='optionalStringValue3'
             labelContent='Optional value 3'
             onInputChange={props.onFormDataChange}
-            customGroupClass='gridLarge ms-4'
+            customGroupClass={`${styles.gridLarge} ms-4`}
           />
         </AnimatedHinge>
       </Form.Group>

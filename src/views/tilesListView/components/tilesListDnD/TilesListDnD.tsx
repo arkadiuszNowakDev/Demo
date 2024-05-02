@@ -15,7 +15,7 @@ import { DndContext, DragEndEvent, DragOverlay, MouseSensor, useSensor, useSenso
 import DropZone from './DropZone';
 import Tile from './Tile';
 import styles from './TilesListDnD.module.scss';
-import { NestedTileItem, TileItem } from '../../../types/TilesListDndTypes';
+import { NestedTileItem, TileItem } from '../../../../types/TilesListDndTypes';
 import {
   findTileItem,
   getTilesListWithInsertIntoDropzone,

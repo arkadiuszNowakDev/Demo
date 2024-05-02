@@ -1,5 +1,7 @@
 import { Form } from 'react-bootstrap';
 
+import styles from './commonFormElementsStyles.module.scss';
+
 type CustomInputProps<T extends object> = {
   id: string;
   value: string;
@@ -11,13 +13,13 @@ type CustomInputProps<T extends object> = {
 
 const CustomInput = <T extends object>(props: CustomInputProps<T>): JSX.Element => {
   return (
-    <Form.Group className={`formGrid ${props.customGroupClass}`}>
-      <Form.Label htmlFor={props.id} className='formLabel'>
+    <Form.Group className={`${styles.formGrid} ${props.customGroupClass}`}>
+      <Form.Label htmlFor={props.id} className={styles.formLabel}>
         {props.labelContent}
       </Form.Label>
       <Form.Control
         id={props.id}
-        className='formControl'
+        className={styles.formControl}
         type='text'
         name={props.fieldName.toString()}
         value={props.value}

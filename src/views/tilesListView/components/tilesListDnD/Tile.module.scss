@@ -1,5 +1,5 @@
-@import '../../styles/colors.scss';
-@import '../../styles/mixins.scss';
+@import '../../../../common/styles/colors.scss';
+@import '../../../../common/styles/mixins.scss';
 
 .tileContainer {
   outline: none;
@@ -19,7 +19,7 @@
     @include flexCenter;
 
     &.nestTile {
-      background-color: $green2;
+      background-color: $green3;
       color: $gray1;
     }
 
@@ -32,7 +32,7 @@
     }
 
     &.focused {
-      outline: 4px solid $frame;
+      outline: 4px solid $orange1;
     }
 
     .nameLabel {

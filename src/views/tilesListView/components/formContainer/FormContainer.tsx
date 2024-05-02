@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 
 import styles from './FormContainer.module.scss';
-import ConfigNameForm from '../../../common/components/formElements/ConfigNameForm';
-import { FormData } from '../../../types/FormTypes';
+import { FormData } from '../../../../types/FormTypes';
+import ConfigNameForm from '../formElements/ConfigNameForm';
 import AnotherNestableForm from '../forms/AnotherNestableForm';
 import NestableForm from '../forms/NestableForm';
 import NestForm from '../forms/NestForm';

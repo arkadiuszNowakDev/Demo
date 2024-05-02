@@ -1,4 +1,5 @@
-import { NestFormData } from '../../../types/FormTypes';
+import styles from './commonFormsStyles.module.scss';
+import { NestFormData } from '../../../../types/FormTypes';
 
 type NestFormProps = {
   nestFormData: NestFormData;
@@ -6,7 +7,7 @@ type NestFormProps = {
 };
 
 const NestForm = (props: NestFormProps): JSX.Element => {
-  return <div className='formContainer'>NestForm</div>;
+  return <div className={styles.formContainer}>NestForm</div>;
 };
 
 export default NestForm;

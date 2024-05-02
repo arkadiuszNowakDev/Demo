@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
-import { FormData, FormType } from '../../types/FormTypes';
-import { TileItem, TileItemBasic, TileItemType } from '../../types/TilesListDndTypes';
+import { FormData, FormType } from '../../../types/FormTypes';
+import { TileItem, TileItemBasic, TileItemType } from '../../../types/TilesListDndTypes';
 
 export const checkIfFormDataIsNestedByAttributeId = (targetItemAttributeId: string | null) => {
   const nestItemData = targetItemAttributeId?.split(':');

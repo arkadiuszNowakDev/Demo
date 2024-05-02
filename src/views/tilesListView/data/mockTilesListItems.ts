@@ -1,5 +1,5 @@
-import { FormData } from '../../types/FormTypes';
-import { TileItem } from '../../types/TilesListDndTypes';
+import { FormData } from '../../../types/FormTypes';
+import { TileItem } from '../../../types/TilesListDndTypes';
 import { getNewFormData } from '../helpers/formHelpers';
 
 export const mockFormsData: TileItem<FormData>[] = [

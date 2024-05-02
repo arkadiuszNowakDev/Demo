@@ -37,7 +37,6 @@ const MAX_ITEM_WIDTH = 250;
 const ContextMenu = (props: ContextMenuProps): JSX.Element => {
   const [contextMenuPosition, setContextMenuPosition] = useState({ x: 0, y: 0 });
   const [contextMenuVisible, setContextMenuVisible] = useState(false);
-
   const [contextMenuItemsConfig, setContextMenuItemsConfig] = useState<ContextMenuItemConfig[] | undefined>(undefined);
 
   const targetItem = useRef<string | null>(null);

@@ -1,17 +1,17 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
 
-import FormContainer from './formContainer/FormContainer';
-import styles from './TilesListView.module.scss';
-import { ContextMenuConfig, ContextMenuItemConfig } from '../../common/components/contextMenu/ContextMenu';
-import TilesListDnD from '../../common/components/tilesListDnD/TilesListDnD';
-import { mockFormsData } from '../../common/data/mockTilesListItems';
-import { getNewFormData } from '../../common/helpers/formHelpers';
+import { ContextMenuConfig, ContextMenuItemConfig } from './components/contextMenu/ContextMenu';
+import FormContainer from './components/formContainer/FormContainer';
+import TilesListDnD from './components/tilesListDnD/TilesListDnD';
+import { mockFormsData } from './data/mockTilesListItems';
+import { getNewFormData } from './helpers/formHelpers';
 import {
   findTileItem,
   getTilesListWithInsertIntoDropzone,
   onTileItemFieldChange,
   removeTileItemsFromArray
-} from '../../common/helpers/tilesListDndHelpers';
+} from './helpers/tilesListDndHelpers';
+import styles from './TilesListView.module.scss';
 import { FormData, FormType } from '../../types/FormTypes';
 import { TileItem, TileItemType } from '../../types/TilesListDndTypes';
 

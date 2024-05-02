@@ -1,7 +1,8 @@
 import { Fragment, MouseEvent, useCallback } from 'react';
 
-import CustomButton, { CustomButtonType } from '../../../common/components/customButton/CustomButton';
-import { AnotherNestableFormData } from '../../../types/FormTypes';
+import styles from './commonFormsStyles.module.scss';
+import CustomButton, { CustomButtonType } from '../../../../common/components/customButton/CustomButton';
+import { AnotherNestableFormData } from '../../../../types/FormTypes';
 
 const BUTTONS_OPTIONS_QTY = 3;
 const BUTTONS_TYPES_IN_ROW: CustomButtonType[] = ['tertiary', 'secondary', 'primary'];
@@ -25,7 +26,7 @@ const AnotherNestableForm = (props: AnotherNestableFormProps): JSX.Element => {
   );
 
   return (
-    <div className='formContainer'>
+    <div className={styles.formContainer}>
       {Array.from({
         length: BUTTONS_OPTIONS_QTY
       }).map((_, index) => {

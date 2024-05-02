@@ -1,5 +1,7 @@
 import { Form } from 'react-bootstrap';
 
+import styles from './commonFormElementsStyles.module.scss';
+
 type CustomCheckProps<T extends object> = {
   fieldName: keyof T;
   isChecked: boolean;
@@ -11,12 +13,12 @@ type CustomCheckProps<T extends object> = {
 
 const CustomCheck = <T extends object>(props: CustomCheckProps<T>): JSX.Element => {
   return (
-    <Form.Label className='formLabel'>
+    <Form.Label className={styles.formLabel}>
       <Form.Check.Input
         name={props.fieldName.toString()}
         value={props.value}
         type={props.type}
-        className='formCheck'
+        className={styles.formCheck}
         onChange={(e) => props.onChange(e.target.name, props.value ? e.target.value : e.target.checked)}
         checked={props.isChecked}
       />
