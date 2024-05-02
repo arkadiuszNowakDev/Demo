@@ -2,7 +2,7 @@ import { Fragment, MouseEvent, useCallback } from 'react';
 
 import styles from './commonFormsStyles.module.scss';
 import CustomButton, { CustomButtonType } from '../../../../common/components/customButton/CustomButton';
-import { AnotherNestableFormData } from '../../../../types/FormTypes';
+import { AnotherNestableFormData } from '../../types/FormTypes';
 
 const BUTTONS_OPTIONS_QTY = 3;
 const BUTTONS_TYPES_IN_ROW: CustomButtonType[] = ['tertiary', 'secondary', 'primary'];

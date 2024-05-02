@@ -1,5 +1,5 @@
 import styles from './commonFormsStyles.module.scss';
-import { NotNestableFormData } from '../../../../types/FormTypes';
+import { NotNestableFormData } from '../../types/FormTypes';
 
 type NotNestableFormProps = {
   notNestableFormData?: NotNestableFormData;

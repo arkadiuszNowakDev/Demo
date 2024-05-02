@@ -3,7 +3,7 @@ import { ReactNode, MouseEvent, useState, useMemo, useRef, useEffect } from 'rea
 import { useDraggable } from '@dnd-kit/core';
 
 import styles from './Tile.module.scss';
-import { TileItem } from '../../../../types/TilesListDndTypes';
+import { TileItem } from '../../types/TilesListDndTypes';
 
 type TileProps<T extends object> = {
   tileItem: TileItem<T>;

@@ -1,6 +1,6 @@
-import { FormData } from '../../../types/FormTypes';
-import { TileItem } from '../../../types/TilesListDndTypes';
 import { getNewFormData } from '../helpers/formHelpers';
+import { FormData } from '../types/FormTypes';
+import { TileItem } from '../types/TilesListDndTypes';
 
 export const mockFormsData: TileItem<FormData>[] = [
   getNewFormData('nestable', 'nestableForm', 'Nestable 1'),

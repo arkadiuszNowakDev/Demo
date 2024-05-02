@@ -1,7 +1,7 @@
 import { Form } from 'react-bootstrap';
 
 import styles from './commonFormsStyles.module.scss';
-import { NestableFormData } from '../../../../types/FormTypes';
+import { NestableFormData } from '../../types/FormTypes';
 import AnimatedHinge from '../animatedHinge/AnimatedHinge';
 import CustomCheck from '../formElements/CustomCheck';
 import CustomInput from '../formElements/CustomInput';

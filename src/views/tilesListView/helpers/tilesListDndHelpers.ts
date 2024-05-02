@@ -1,4 +1,4 @@
-import { TileItem } from '../../../types/TilesListDndTypes';
+import { TileItem } from '../types/TilesListDndTypes';
 
 export const findTileItem = <T extends object>(
   itemId: string | number,

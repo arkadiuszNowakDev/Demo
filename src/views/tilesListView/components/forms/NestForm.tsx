@@ -1,5 +1,5 @@
 import styles from './commonFormsStyles.module.scss';
-import { NestFormData } from '../../../../types/FormTypes';
+import { NestFormData } from '../../types/FormTypes';
 
 type NestFormProps = {
   nestFormData: NestFormData;

@@ -2,7 +2,7 @@ import { Form } from 'react-bootstrap';
 
 import styles from './commonFormElementsStyles.module.scss';
 import CustomInput from './CustomInput';
-import { FormData, FormType } from '../../../../types/FormTypes';
+import { FormData, FormType } from '../../types/FormTypes';
 
 const getFormHeaderTitle = (formType: FormType): string => {
   switch (formType) {

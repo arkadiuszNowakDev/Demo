@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react';
 import { useDroppable } from '@dnd-kit/core';
 
 import styles from './DropZone.module.scss';
-import { TileItem } from '../../../../types/TilesListDndTypes';
+import { TileItem } from '../../types/TilesListDndTypes';
 
 type DropZoneProps<T extends object> = {
   id: string;
