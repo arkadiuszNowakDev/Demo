@@ -20,7 +20,10 @@ const App = () => {
 
   return (
     <div className={styles.app}>
-      <MainView />
+      <div className={styles.topBar}>TOP BAR</div>
+      <div className={styles.view}>
+        <MainView />
+      </div>
     </div>
   );
 };

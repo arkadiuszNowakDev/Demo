@@ -1,10 +1,8 @@
 @import '../../common/styles/colors.scss';
 
 .tilesListView {
-  width: 80%;
-  min-width: 650px;
-  height: 60%;
-  max-width: 900px;
+  width: 850px;
+  height: 500px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
