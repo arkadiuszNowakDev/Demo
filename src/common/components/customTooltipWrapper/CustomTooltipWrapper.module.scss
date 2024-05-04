@@ -1,0 +1,20 @@
+@import '../../../common/styles/colors.scss';
+
+.tooltip {
+  max-width: 350px;
+  background-color: $black;
+  text-align: center;
+  color: $white;
+  border: 1px solid $gray1;
+  border-radius: 0.25rem;
+  font-size: 0.8rem;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+
+  :global {
+    .tippy-arrow {
+      color: $gray1;
+      z-index: -1;
+    }
+  }
+}

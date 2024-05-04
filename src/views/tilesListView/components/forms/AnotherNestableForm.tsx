@@ -9,7 +9,7 @@ const BUTTONS_TYPES_IN_ROW: CustomButtonType[] = ['tertiary', 'secondary', 'prim
 
 type AnotherNestableFormProps = {
   anotherNestableFormData: AnotherNestableFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean) => void;
+  onFormDataChange: (fieldName: keyof AnotherNestableFormData, value: string | boolean) => void;
 };
 
 const AnotherNestableForm = (props: AnotherNestableFormProps): JSX.Element => {

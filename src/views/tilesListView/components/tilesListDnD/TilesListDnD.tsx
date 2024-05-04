@@ -34,6 +34,7 @@ type TilesListDnDProps<T extends object> = {
   setTilesListItems: Dispatch<SetStateAction<TileItem<T>[]>>;
   onFocusItemsChange?: (focusedItems: TileItem<T>[]) => void;
   contextMenuConfig?: ContextMenuConfig[];
+  customContainerClass?: string;
 };
 
 const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Element => {
@@ -254,10 +255,14 @@ const TilesListDnD = <T extends object>(props: TilesListDnDProps<T>): JSX.Elemen
     let dropZonesCounter = 0;
 
     return (
-      <ContextMenu config={props.contextMenuConfig} customClass={styles.tilesListDnD}>
+      <ContextMenu
+        config={props.contextMenuConfig}
+        customClass={`${styles.tilesListDnD} ${props.customContainerClass || ''}`}
+      >
         {!props.tilesListItems.length ? (
-          <div className={styles.addFirstElement}>
-            <span data-addicon='mainListDropzone:0'>Add the first element</span>
+          <div className={styles.addFirstElement} data-addicon='mainListDropzone:0'>
+            <i className='bi bi-plus-circle-dotted' />
+            <span>Add the first element</span>
           </div>
         ) : (
           <DropZone id={`mainListDropzone:${dropZonesCounter}`} />

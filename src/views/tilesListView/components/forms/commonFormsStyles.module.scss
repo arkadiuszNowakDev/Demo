@@ -6,6 +6,7 @@
   border-radius: 5px;
   padding: 10px;
   flex-grow: 1;
+  color: $gray1;
 }
 
 .gridSmall {
@@ -14,4 +15,10 @@
 
 .gridLarge {
   grid-template-columns: 120px 200px;
+}
+
+.nestForm label {
+  display: block;
+  height: 30px;
+  margin-bottom: 20px;
 }

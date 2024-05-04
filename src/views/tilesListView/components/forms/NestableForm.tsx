@@ -8,7 +8,7 @@ import CustomInput from '../formElements/CustomInput';
 
 type NestableFormProps = {
   nestableFormData: NestableFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean) => void;
+  onFormDataChange: (fieldName: keyof NestableFormData, value: string | boolean) => void;
 };
 
 const NestableForm = (props: NestableFormProps): JSX.Element => {

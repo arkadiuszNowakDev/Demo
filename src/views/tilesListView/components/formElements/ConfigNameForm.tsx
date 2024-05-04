@@ -7,13 +7,13 @@ import { FormData, FormType } from '../../types/FormTypes';
 const getFormHeaderTitle = (formType: FormType): string => {
   switch (formType) {
     case 'nestableForm':
-      return 'Nestable form';
+      return 'Custom inputs and checkboxes form';
 
     case 'anotherNestableForm':
-      return 'Another nestable form';
+      return 'Custom buttons form';
 
     case 'nestForm':
-      return 'Nest form';
+      return 'Overlay content tooltip form';
 
     case 'notNestableForm':
       return 'Not nestable form';

@@ -17,7 +17,7 @@ export type AnotherNestableFormData = { formType: 'anotherNestableForm' } & Reco
 
 export type NestFormData = {
   formType: 'nestForm';
-  someValue: string;
+  textAreaContent: string;
 };
 
 export type NotNestableFormData = {

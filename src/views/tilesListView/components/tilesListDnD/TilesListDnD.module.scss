@@ -8,8 +8,6 @@
   overflow-x: hidden;
   @include scrollable;
   padding: 5px 15px 20px 15px;
-  width: 100%;
-  height: 100%;
 }
 
 .tileThumbnail {
@@ -20,13 +18,23 @@
 }
 
 .addFirstElement {
-  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  width: fit-content;
+  margin-inline: auto;
+  @include noSelect;
+  color: $gray1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 
-  span {
-    padding: 5px 10px;
-    cursor: pointer;
-    color: $gray1;
-    @include noSelect;
+  i {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    color: $gray2;
   }
 }
 

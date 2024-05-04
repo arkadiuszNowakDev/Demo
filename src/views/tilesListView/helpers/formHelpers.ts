@@ -43,7 +43,7 @@ export const getNewFormData = (tileType: TileItemType, formType: FormType, tileN
       return {
         ...getNewTileItemBasic(tileType, tileName),
         formType,
-        someValue: ''
+        textAreaContent: ''
       };
 
     case 'notNestableForm':

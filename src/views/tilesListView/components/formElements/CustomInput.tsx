@@ -7,7 +7,7 @@ type CustomInputProps<T extends object> = {
   value: string;
   fieldName: keyof T;
   labelContent: string;
-  onInputChange: (fieldName: string, value: string | boolean) => void;
+  onInputChange: (fieldName: keyof T, value: string | boolean) => void;
   customGroupClass?: string;
 };
 
@@ -19,12 +19,11 @@ const CustomInput = <T extends object>(props: CustomInputProps<T>): JSX.Element 
       </Form.Label>
       <Form.Control
         id={props.id}
-        className={styles.formControl}
-        type='text'
-        name={props.fieldName.toString()}
         value={props.value}
-        onChange={(e) => props.onInputChange(e.target.name, e.target.value)}
+        onChange={(e) => props.onInputChange(props.fieldName, e.target.value)}
+        type='text'
         autoComplete='off'
+        className={styles.formControl}
       />
     </Form.Group>
   );

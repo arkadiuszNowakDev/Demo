@@ -3,7 +3,7 @@ import { NotNestableFormData } from '../../types/FormTypes';
 
 type NotNestableFormProps = {
   notNestableFormData?: NotNestableFormData;
-  onFormDataChange: (fieldName: string, value: string | boolean) => void;
+  onFormDataChange: (fieldName: keyof NotNestableFormData, value: string | boolean) => void;
 };
 
 const NotNestableForm = (props: NotNestableFormProps): JSX.Element => {

@@ -68,3 +68,18 @@
     background-color: $blue1;
   }
 }
+
+.textArea {
+  background-color: $blue1;
+  border: 1px solid $orange1;
+  color: $gray1;
+  resize: none;
+  width: 100%;
+  height: 200px;
+  border-radius: 5px;
+  @include scrollable;
+
+  &:focus {
+    border: 1px solid $green1;
+  }
+}

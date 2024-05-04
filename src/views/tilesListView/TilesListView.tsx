@@ -50,6 +50,7 @@ const TilesListView = (): JSX.Element => {
         setTilesListItems={setTilesListItems}
         onFocusItemsChange={onCheckedItemsChange}
         contextMenuConfig={contextMenuConfig}
+        customContainerClass={styles.tilesListContainer}
       />
       <FormContainer formData={focusedItem} onFormDataChange={onFormDataChange} />
     </div>
