@@ -1,0 +1,50 @@
+@import '../../styles/colors.scss';
+
+.button {
+  border-radius: 10px;
+  border: 1px solid $violet1;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:not(&:disabled):active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &.primaryButton {
+    background-color: $violet1;
+
+    &:not(:disabled):hover {
+      background-color: $violet2;
+      border-color: $violet2;
+    }
+  }
+
+  &.secondaryButton {
+    background-color: inherit;
+    color: $violet1;
+
+    &:not(:disabled):hover {
+      color: $violet2;
+      border-color: $violet2;
+    }
+  }
+
+  &.tertiaryButton {
+    background-color: inherit;
+    border: none;
+    color: $violet1;
+
+    &:not(:disabled):hover {
+      color: $violet2;
+    }
+  }
+}

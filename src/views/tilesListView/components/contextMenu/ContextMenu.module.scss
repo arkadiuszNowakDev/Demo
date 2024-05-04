@@ -1,0 +1,42 @@
+@import '../../../../common/styles/colors.scss';
+
+.contextMenuContainer {
+  position: fixed;
+  z-index: 9999;
+  background-color: $black;
+  border-radius: 5px;
+  border: 1px solid $gray2;
+  color: $gray1;
+  overflow: hidden;
+
+  .menuItem {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+
+    .itemContent {
+      max-width: 100%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &.withDivider {
+      border-bottom: 1px solid $gray2;
+    }
+
+    &:not(.disabled):hover {
+      background-color: $gray4;
+    }
+
+    &.disabled {
+      color: $gray4;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../../../common/styles/colors.scss';
+@import '../../../../common/styles/mixins.scss';
+
+.formContainer {
+  background-color: $black;
+  border-radius: 5px;
+  padding: 10px;
+  flex-grow: 1;
+  color: $gray1;
+}
+
+.gridSmall {
+  grid-template-columns: 70px 200px;
+}
+
+.gridLarge {
+  grid-template-columns: 120px 200px;
+}
+
+.nestForm label {
+  display: block;
+  height: 30px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,74 @@
+@import '../../../../common/styles/colors.scss';
+
+.addTileArea {
+  min-height: 20px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .addIconContainer {
+    height: 60px;
+    width: 15px;
+    display: flex;
+    align-items: center;
+
+    i {
+      color: $gray1;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.2s;
+      position: relative;
+      z-index: 200;
+
+      &:hover {
+        color: $gray2;
+      }
+    }
+
+    &.addIconLeft {
+      position: absolute;
+      left: -14px;
+      top: calc(50% - 30px);
+      justify-content: flex-start;
+    }
+
+    &.addIconRight {
+      position: absolute;
+      right: -14px;
+      top: calc(50% - 30px);
+      justify-content: flex-end;
+    }
+  }
+
+  &:not(.disabled):not(.elementIsOver):hover {
+    i {
+      opacity: 1;
+    }
+  }
+
+  .dropZone {
+    background-color: inherit;
+    min-height: 5px;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding-inline: 10px;
+    margin-inline: 10px;
+    width: 100%;
+    text-align: center;
+    color: $gray3;
+    font-size: 0.8rem;
+
+    &.elementIsOver {
+      background-color: rgb(104, 88, 88);
+      color: rgb(226, 226, 226);
+    }
+
+    &.disabled {
+      color: $red2;
+    }
+  }
+}

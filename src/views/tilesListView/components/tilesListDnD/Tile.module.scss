@@ -1,0 +1,64 @@
+@import '../../../../common/styles/colors.scss';
+@import '../../../../common/styles/mixins.scss';
+
+.tileContainer {
+  outline: none;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+  color: $black;
+
+  .tile {
+    height: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: 2px solid $gray4;
+    transition: outline 0.1s;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 100;
+    @include flexCenter;
+
+    &.nestTile {
+      background-color: $green3;
+      color: $gray1;
+    }
+
+    &.nestableTile {
+      background-color: $beige1;
+    }
+
+    &.notNestableTile {
+      background-color: $gray3;
+    }
+
+    &.focused {
+      outline: 4px solid $orange1;
+    }
+
+    .nameLabel {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-inline: 10px;
+
+      &.noData {
+        font-style: italic;
+        font-size: 0.8rem;
+      }
+    }
+
+    input {
+      background-color: inherit;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+      padding-inline: 10px;
+      color: inherit;
+      font-size: 0.9rem;
+    }
+  }
+
+  .nest {
+    padding-inline: 35px 10px;
+  }
+}

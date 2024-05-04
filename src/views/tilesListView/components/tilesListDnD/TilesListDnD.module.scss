@@ -1,0 +1,54 @@
+@import '../../../../common/styles/colors.scss';
+@import '../../../../common/styles/mixins.scss';
+
+.tilesListDnD {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  @include scrollable;
+  padding: 5px 15px 20px 15px;
+}
+
+.tileThumbnail {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  opacity: 0.7;
+}
+
+.addFirstElement {
+  padding: 5px 10px;
+  cursor: pointer;
+  width: fit-content;
+  margin-inline: auto;
+  @include noSelect;
+  color: $gray1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+
+  i {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    color: $gray2;
+  }
+}
+
+.nestedTileWrapper {
+  position: relative;
+
+  .tileLinesBox {
+    width: 17px;
+    height: 65px;
+    position: absolute;
+    top: -45px;
+    left: -18px;
+    border-left: 2px solid $violet1;
+    border-bottom: 2px solid $violet1;
+    border-bottom-left-radius: 7px;
+  }
+}

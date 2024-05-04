@@ -1,8 +1,17 @@
+@import '../../common/styles/colors.scss';
+
 .tilesListView {
   width: 80%;
+  min-width: 650px;
   height: 60%;
   max-width: 900px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
+
+  .tilesListContainer {
+    border-radius: 5px;
+    border: 1px solid $gray4;
+    padding-inline: 20px;
+  }
 }
