@@ -1,4 +1,5 @@
 @import '../../../../common/styles/colors.scss';
+@import '../../../../common/styles/mixins.scss';
 
 .sampleTile {
   width: 300px;
@@ -6,6 +7,7 @@
   padding: 20px;
   background-color: $white;
   font-family: 'Titillium Web', sans-serif;
+  @include noSelect;
 
   img {
     width: 100%;

@@ -1,11 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
+import { useLocation } from 'react-router-dom';
 import { hideAll } from 'tippy.js';
 
 import styles from './App.module.scss';
-import MainView from './views/mainView/MainView';
+import { getViewBackgroundColor } from './common/helpers/appHelpers';
+import AppRoutes from './routes/AppRoutes';
 
 const App = () => {
+  const location = useLocation();
+
+  const appBackgroundColor = useMemo(() => getViewBackgroundColor(location.pathname), [location.pathname]);
+
   useEffect(() => {
     const hideAllTooltips = (): void => {
       hideAll();
@@ -19,10 +25,10 @@ const App = () => {
   }, []);
 
   return (
-    <div className={styles.app}>
+    <div className={styles.app} style={{ backgroundColor: appBackgroundColor }}>
       <div className={styles.topBar}>TOP BAR</div>
       <div className={styles.view}>
-        <MainView />
+        <AppRoutes />
       </div>
     </div>
   );
