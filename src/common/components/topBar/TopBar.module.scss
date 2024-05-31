@@ -1,0 +1,44 @@
+@import '../../styles/colors.scss';
+@import '../../styles/mixins.scss';
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Chettan+2&family=Calligraffitti&display=swap');
+
+.topBar {
+  flex-shrink: 0;
+  min-width: 1000px;
+  height: 70px;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color: $blackTransparent;
+  box-shadow: 0px 8px 15px $black;
+  @include flexCenter;
+
+  i {
+    color: $gray1;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s;
+
+    &:hover {
+      color: $gray2;
+    }
+
+    &:active {
+      transform: translateY(-47%);
+    }
+  }
+
+  span {
+    @include noSelect;
+    font-family: 'Calligraffitti', cursive;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    color: $white;
+    text-shadow: 2px 2px 0px $violet2, 3px 3px 0px $beige2;
+  }
+}

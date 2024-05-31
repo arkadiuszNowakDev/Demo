@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { hideAll } from 'tippy.js';
 
 import styles from './App.module.scss';
+import TopBar from './common/components/topBar/TopBar';
 import { getViewBackgroundColor } from './common/helpers/appHelpers';
 import AppRoutes from './routes/AppRoutes';
 
@@ -13,7 +14,7 @@ const App = () => {
   const appBackgroundColor = useMemo(() => getViewBackgroundColor(location.pathname), [location.pathname]);
 
   useEffect(() => {
-    const hideAllTooltips = (): void => {
+    const hideAllTooltips = () => {
       hideAll();
     };
 
@@ -26,7 +27,7 @@ const App = () => {
 
   return (
     <div className={styles.app} style={{ backgroundColor: appBackgroundColor }}>
-      <div className={styles.topBar}>TOP BAR</div>
+      <TopBar />
       <div className={styles.view}>
         <AppRoutes />
       </div>
