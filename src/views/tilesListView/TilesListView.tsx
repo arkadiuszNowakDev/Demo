@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import FormContainer from './components/formContainer/FormContainer';
 import TilesListDnD from './components/tilesListDnD/TilesListDnD';
@@ -8,11 +8,19 @@ import { useTilesListContextMenuConfig } from './hooks/useTilesListContextMenuCo
 import styles from './TilesListView.module.scss';
 import { FormData } from './types/FormTypes';
 import { TileItem } from './types/TilesListDndTypes';
+import { setViewTitle } from '../../common/core/appSlice';
+import { useAppDispatch } from '../../common/hooks/reduxHooks';
 
 const TilesListView = (): JSX.Element => {
+  const dispatch = useAppDispatch();
+
   const [tilesListItems, setTilesListItems] = useState<TileItem<FormData>[]>(mockFormsData);
   const [focusedItemId, setFocusedItemId] = useState<string | undefined>(undefined);
   const allCheckedItems = useRef<TileItem<FormData>[]>([]);
+
+  useEffect(() => {
+    dispatch(setViewTitle('Tiles List DnD'));
+  }, []);
 
   const { contextMenuConfig } = useTilesListContextMenuConfig({
     setTilesListItems,
